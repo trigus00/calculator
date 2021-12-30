@@ -1,0 +1,58 @@
+*{
+    box-sizing: border-box;
+}
+
+.container{
+    margin:20px auto;
+    max-width: 225px;
+    background-color: blue;
+    border: black solid 2px;
+
+}
+
+.row{
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    /* margin: 2px; */
+}
+button {
+    margin: 2px;
+    color: white;
+    font-size: medium;
+    
+}
+/* Make this prettier! */
+.num {
+    background-color: white;  
+    padding: 15px;
+    color:blue
+}
+.operator, .equal , .reset{
+    background-color: red;  
+    padding: 15px;
+    
+}
+input{
+    margin-top: 10px;
+    margin-bottom: 10px;
+    width: 90%;
+    height:40%;
+    color: lightgrey;
+    background-color: white;
+    
+}
+.calc{
+    padding: 5px;
+ /* /   background-color: blue; */
+    /* border: black solid 2px; */
+}
+.solar{
+    color: darkslategrey; 
+    background-color: black;
+    border: black solid 1px;
+    padding: 10px;
+    margin-left: 15px;
+    margin-bottom: 10px;
+    width: 40%;
+}
