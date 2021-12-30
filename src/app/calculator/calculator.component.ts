@@ -1,48 +1,90 @@
 import { Component, OnInit } from '@angular/core';
 
+
 @Component({
   selector: 'calculator',
   templateUrl: './calculator.component.html',
   styleUrls: ['./calculator.component.scss']
 })
 export class CalculatorComponent implements OnInit {
-  input:string  = '';
+  title = 'Calculator';
+  num1!: number;
+  num2!: number;
+  arr: Array<number> = [];
+  operation: string = '';
+  count: number = 0;
+  input:string = ''
+
 
   constructor() { }
 
   ngOnInit(): void {
-  }
-num(num:string){
-  if (num=="0") {
-    if (this.input==""){
-      return;
-    }
-    const PrevKey = this.input[this.input.length - 1];
-    if (PrevKey === '/' || PrevKey === '*' || PrevKey === '-' || PrevKey === '+')  {
-        return;
-    }
-  }
-  this.input = this.input + num
-    this.calcAnswer();
-  }
-  getLastOperand() {
-    let pos:number;
-    console.log(this.input)
-    pos=this.input.toString().lastIndexOf("+")
-    if (this.input.toString().lastIndexOf("-") > pos) pos=this.input.lastIndexOf("-")
-    if (this.input.toString().lastIndexOf("*") > pos) pos=this.input.lastIndexOf("*")
-    if (this.input.toString().lastIndexOf("/") > pos) pos=this.input.lastIndexOf("/")
-    console.log('Last '+this.input.substr(pos+1))
-    return this.input.substr(pos+1)
-  }
-  operator(op:string){
-    
-  }
-  calcAnswer(){
 
   }
-  clear(){
-    this.input = ''
+
+  num(val: string) {
+    if (this.count === 0) {
+      this.num1 = (parseInt(val));
+      this.arr.push(this.num1);
+      console.log(this.arr)
+      return this.arr;
+    }
+    else {
+      this.num2 = parseInt(val)
+      this.arr.push(this.num2)
+      console.log(this.arr)
+    }
+    return this.arr;
   }
+  operator(op: string) {
+    this.operation= op; 
+    this.num1 = parseInt(this.arr.join(''));
+    console.log(this.num1)
+    this.arr = [];
+    this.count++
+
+  }
+  equal() {
+    this.num2 = parseInt(this.arr.join(''))
+    console.log('number 1:'+ this.num1,'number 2:'+ this.num2);
+    let calculation = this.calculate(this.num1, this.num2, this.operation)
+    console.log(calculation)
+    return this.calculate.toString()
+  }
+
+
+  clear() {
+    this.num1 = 0;
+    this.num2 = 0;
+    this.arr = []
+  }
+
+
+calculate(num1: Number, num2: Number, operator: string): number {
+  let total:number = 0;
+  // console.log(num1,num2,operator)
+
+  switch (operator) {
+
+    case '+':
+      total = +num1 + +num2;
+      // break;
+      return total;
+
+    case '-':
+      total = +num1 - +num2;
+      // break;
+      return total;
+    case '*':
+      total = +num1 * +num2;
+      // break;
+      return total;
+    case '/':
+      total = +num1 / +num2;
+      // break;
+      return total;
+  }
+  return total;
+
 }
-
+}
