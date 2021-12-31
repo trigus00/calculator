@@ -47,6 +47,7 @@ export class CalculatorComponent implements OnInit {
     this.arr = [];
     this.count++
     this.input += this.operation
+    return this.operation
 
   }
   equal() {
@@ -56,20 +57,23 @@ export class CalculatorComponent implements OnInit {
     let calculation = this.calculate(this.num1, this.num2, this.operation)
     console.log(calculation)
     this.input = calculation.toString()
+    return calculation.toString()
+    
   }
 
 
   clear() {
     this.num1 = 0;
     this.num2 = 0;
-    this.arr = []
-    this.input = ''
+    this.arr = [];
+    this.input = '';
   }
 
 
-calculate(num1: Number, num2: Number, operator: string): number {
+calculate(num1: Number, num2: Number, operator: string): any {
   let total:number = 0;
   // console.log(num1,num2,operator)
+  
 
   switch (operator) {
 
@@ -87,11 +91,15 @@ calculate(num1: Number, num2: Number, operator: string): number {
       // break;
       return total;
     case '/':
+      if(num2 == 0){
+        return 'It is undefinded'
+      }
       total = +num1 / +num2;
+      
+      }
       // break;
       return total;
   }
-  return total;
+  // return total;
 
-}
 }

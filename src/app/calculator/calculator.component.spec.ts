@@ -75,17 +75,22 @@ describe('CalculatorComponent', () => {
   it('should get the operator',() =>{
     const fixture = TestBed.createComponent(CalculatorComponent);
     fixture.detectChanges();
-    let op = '+'||'-'||'*'||'/'
-    expect(component.operator('-')).withContext('-')
+    let op = '/'
+    expect(component.operator(op)).toBe(op)
     })
 
   it('calculate function', ()=>{
     const fixture = TestBed.createComponent(CalculatorComponent);
     fixture.detectChanges();
     const app = fixture.componentInstance; 
-    let result =app.calculate(1,2,'/')
+    let result =app.calculate(1,2,'*')
+    let result1 = app.calculate(100,1,'-')
+    let result2 = app.calculate(1,0,'/')
 
-    expect(result).toEqual(.5)
+    expect(result).toEqual(2)
+    expect(result1).toEqual(99)
+    expect(result2).toBe('It is undefinded')
+    
     
   })
 });
