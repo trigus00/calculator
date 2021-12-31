@@ -6,12 +6,12 @@ import { CalculatorComponent } from './calculator.component';
 describe('CalculatorComponent', () => {
   let component: CalculatorComponent;
   let fixture: ComponentFixture<CalculatorComponent>;
-  let num1!: number;
-  let num2!: number;
-  let arr: Array<number> = [];
-  let operation: string = '';
-  let count: number = 0;
-  let input:string = ''
+  // let num1!: number;
+  // let num2!: number;
+  // let arr: Array<number> = [];
+  // let operation: string = '';
+  // let count: number = 0;
+  // let input:string = ''
   
 
   beforeEach(async () => {
@@ -66,6 +66,7 @@ describe('CalculatorComponent', () => {
     expect(values).toBeGreaterThan(0)
     expect(values).not.toBeUndefined()
     expect(values).not.toBeNaN()
+    
    
     
     
@@ -75,7 +76,7 @@ describe('CalculatorComponent', () => {
     const fixture = TestBed.createComponent(CalculatorComponent);
     fixture.detectChanges();
     let op = '+'||'-'||'*'||'/'
-    expect(component.operator('-') ).toMatch(operation)
+    expect(component.operator('-')).withContext('-')
     })
 
   it('calculate function', ()=>{

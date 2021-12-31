@@ -15,6 +15,8 @@ export class CalculatorComponent implements OnInit {
   count: number = 0;
   input:string = ''
 
+  
+
 
   constructor() { }
 
@@ -27,12 +29,14 @@ export class CalculatorComponent implements OnInit {
       this.num1 = (parseInt(val));
       this.arr.push(this.num1);
       console.log(this.arr)
+      this.input += this.num1
       return this.arr;
     }
     else {
       this.num2 = parseInt(val)
       this.arr.push(this.num2)
       console.log(this.arr)
+      this.input += this.num2
     }
     return this.arr;
   }
@@ -42,14 +46,16 @@ export class CalculatorComponent implements OnInit {
     console.log(this.num1)
     this.arr = [];
     this.count++
+    this.input += this.operation
 
   }
   equal() {
     this.num2 = parseInt(this.arr.join(''))
+    this.input += this.num2
     console.log('number 1:'+ this.num1,'number 2:'+ this.num2);
     let calculation = this.calculate(this.num1, this.num2, this.operation)
     console.log(calculation)
-    return this.calculate.toString()
+    this.input = calculation.toString()
   }
 
 
@@ -57,6 +63,7 @@ export class CalculatorComponent implements OnInit {
     this.num1 = 0;
     this.num2 = 0;
     this.arr = []
+    this.input = ''
   }
 
 
